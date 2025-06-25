@@ -30,7 +30,7 @@ This project is a complete infrastructure and application deployment that:
 
 ## URL
 
-Once deployed, your app is accessible at:
+Once deployed, app is accessible at:
 
 ```
 http://<alb_dns_name>/hello
