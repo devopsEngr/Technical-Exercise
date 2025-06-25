@@ -11,4 +11,7 @@ Profile                  Credentials
 =======                  ===========                   
 default                  -                                                  
 devops                   devops              
-  
+
+Push docker image to ECR
+aws ecr create-repository --repository-name springboot-hello-app --image-tag-mutability IMMUTABLE
+
