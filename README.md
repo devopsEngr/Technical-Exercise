@@ -28,35 +28,6 @@ This project is a complete infrastructure and application deployment that:
 
 ---
 
-## ⚙️ Features
-
-- **Spring Boot REST endpoint** at `/hello` returns `"OK"` and HTTP 200.
-- Docker image is built using `buildx` and pushed to ECR:
-  ```bash
-  docker buildx build --platform linux/amd64 -t <ecr_repo>:latest --push .
-  ```
-- EC2 runs in **private subnet** for better security.
-- Public traffic flows via **ALB**, which forwards to EC2 over port 8080.
-- ALB performs **health checks** on `/hello`.
-
----
-
-## 🔐 Security Best Practices Implemented
-
-✅ EC2s are in **private subnet**, not exposed to internet  
-✅ Only ALB in public subnet  
-✅ **Security Groups** allow:
-- Port 80: ALB ← Internet
-- Port 8080: EC2 ← ALB only  
-✅ No public IP on EC2  
-✅ IAM role allows only:
-- ECR pull (`AmazonEC2ContainerRegistryReadOnly`)
-- SSM session (`AmazonSSMManagedInstanceCore`)  
-✅ SSM access enabled – no SSH keys required  
-✅ Minimal port exposure (no 22 for SSH)
-
----
-
 ## URL
 
 Once deployed, your app is accessible at:
