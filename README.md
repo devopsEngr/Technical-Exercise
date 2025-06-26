@@ -38,7 +38,7 @@ http://<alb_dns_name>/hello
 
 Example:
 ```
-http://web-app-alb-1775295125.ap-southeast-2.elb.amazonaws.com/hello
+http://web-app-alb-369283590.ap-southeast-2.elb.amazonaws.com/hello
 ```
 
 Returns:
