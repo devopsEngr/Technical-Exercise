@@ -1,9 +1,12 @@
 name: CICD Pipeline
 
 on:
-  push:
-    branches:
-      - main
+ workflow_dispatch:
+  inputs:
+      image_version:
+        description: 'Docker image version tag (e.g. v1.0.0)'
+        required: true
+        default: 'latest'
 
 jobs:
   deploy:
