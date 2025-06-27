@@ -22,6 +22,7 @@ jobs:
           distribution: 'temurin'
 
       - name: Build Spring Boot App
+        working-directory: springboot-application
         run: mvn clean package -DskipTests
 
       - name: Set up Docker
