@@ -5,7 +5,7 @@ This project is a complete infrastructure and application deployment that:
 - Builds and packages a SpringBoot app with a '/hello' endpoint returning '200 OK'.
 - Packages the app using Docker, pushes it to AWS ECR
 - Provisions AWS infrastructure with Terraform
-- Deploys app to EC2 (via Auto Scaling Group) in a private Subnet, fronted by a public ALB.
+- Deploys app to EC2 (via Auto Scaling Group) in a private Subnet, fronted by a public LB.
 
 ---
 
@@ -17,13 +17,15 @@ This project is a complete infrastructure and application deployment that:
 ├── src/main/java                   # Spring Boot Java source code
 ├── Dockerfile                      # Builds the Spring Boot JAR into a Docker image
 ├── terraform/
-│   ├── main.tf                     # VPC, EC2 Launch Template, Auto Scaling Group
+│   ├── main.tf                     # EC2 Launch Template, Auto Scaling Group
+│   └── vpc.tf                      # VPC and subnet configurations
 │   ├── alb.tf                      # Application Load Balancer & Target Group
 │   ├── ec2_sg.tf                   # Security Groups for ALB and EC2
-│   ├── iam.tf                      # IAM role for EC2 to pull ECR images and enable SSM
-│   ├── output.tf                   # Terraform output values (e.g., ALB URL)
-│   ├── variables.tf                # Input variables for reuse
-│   └── user_data.sh.tpl            # Bootstrap script to pull and run Docker container
+│   ├── iam.tf                      # IAM role for EC2 to pull ECR images and enable SSM for EC2 access
+│   ├── output.tf                   # Terraform output values (e.g., ALB default URL)
+│   ├── variables.tf                # variables declaration
+│   └── user_data.sh.tpl            # script to pull and run Docker container
+
 ```
 
 ---
