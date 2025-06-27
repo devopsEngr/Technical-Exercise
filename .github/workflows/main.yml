@@ -40,14 +40,14 @@ jobs:
 
       - name: Login to Amazon ECR
         run: |
-          IMAGE_URI=${{ vars.AWS_ACCOUNT_ID }}.dkr.ecr.${{ vars.AWS_REGION }}.amazonaws.com/hello-app
+          IMAGE_URI=${{ vars.AWS_ACCOUNT_ID }}.dkr.ecr.${{ vars.AWS_REGION }}.amazonaws.com/springboot-hello-app
           aws ecr get-login-password --region ${{ vars.AWS_REGION }} | \
             docker login --username AWS \
             --password-stdin $IMAGE_URI
 
       - name: Build & Push Docker Image
         run: |
-          IMAGE_URI=${{ vars.AWS_ACCOUNT_ID }}.dkr.ecr.${{ vars.AWS_REGION }}.amazonaws.com/hello-app
+          IMAGE_URI=${{ vars.AWS_ACCOUNT_ID }}.dkr.ecr.${{ vars.AWS_REGION }}.amazonaws.com/springboot-hello-app
           VERSION_TAG=${{ github.event.inputs.image_version }}
           docker build -t $IMAGE_URI:$VERSION_TAG ./springboot-application
           docker push $IMAGE_URI:$VERSION_TAG
