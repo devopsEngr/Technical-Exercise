@@ -23,7 +23,8 @@ resource "aws_launch_template" "lt" {
 
 user_data = base64encode(templatefile("${path.module}/user_data.sh.tpl", {
     aws_region     = var.aws_region,
-    aws_account_id = var.aws_account_id
+    aws_account_id = var.aws_account_id,
+    image_version  = var.image_version
   }))
   depends_on = [aws_iam_instance_profile.ec2_instance_profile]
   lifecycle {

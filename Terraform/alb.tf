@@ -18,7 +18,7 @@ resource "aws_lb_target_group" "webapp_tg" {
 
   health_check {
     path                = "/hello"
-    interval            = 30
+    interval            = 300
     timeout             = 5
     healthy_threshold   = 2
     unhealthy_threshold = 2

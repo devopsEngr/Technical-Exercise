@@ -10,3 +10,8 @@ variable "aws_account_id" {
   type    = string
   default = "339397515655"  
 }
+variable "image_version" {
+  type        = string
+  description = "Docker image tag to deploy"
+  default     = "latest"
+}
