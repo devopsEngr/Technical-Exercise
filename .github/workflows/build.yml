@@ -2,11 +2,12 @@
 name: Docker Build & Push
 
 on:
-  workflow_call:
+  workflow_dispatch:
     inputs:
       image_version:
         required: true
-        type: string
+        default: latest
+        
 
 jobs:
   build:
