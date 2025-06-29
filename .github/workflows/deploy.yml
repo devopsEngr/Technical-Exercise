@@ -38,7 +38,7 @@ jobs:
 
       - name: Terraform Init
         working-directory: Terraform
-        run: terraform init
+        run: terraform init -backend-config="bucket="springboot-terraform-state-bucket""
 
       - name: Terraform Apply
         working-directory: Terraform
