@@ -2,7 +2,7 @@ terraform {
   backend "s3" {
     bucket         = "springboot-terraform-state-bucket"
     key            = "dev/terraform.tfstate"
-    region         = var.aws_region
+    region         = "ap-southeast-2"
     dynamodb_table = "terraform-locks"   
     encrypt        = true
   }
