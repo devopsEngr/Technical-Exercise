@@ -1,12 +1,20 @@
 # .github/workflows/deploy-apply.yml
-name: Terraform Apply
+name: Terraform Run
 
 on:
   workflow_call:
     inputs:
       image_version:
         required: true
-        type: string
+        default: latest
+      tf_action:
+        description: 'Terraform Action'
+        required: true
+        default: 'apply'
+        type: choice
+        options:
+          - apply
+          - destroy
 
 jobs:
   apply:
@@ -33,4 +41,10 @@ jobs:
 
       - name: Terraform Apply
         working-directory: Terraform
+        if: github.event.inputs.tf_action == 'apply'
         run: terraform apply -auto-approve -var="image_version=${{ inputs.image_version }}"
+     
+      - name: Terraform Destroy
+        working-directory: Terraform
+        if: github.event.inputs.tf_action == 'destroy'
+        run: terraform destroy -auto-approve
