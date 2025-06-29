@@ -1,4 +1,10 @@
-provider "aws" {
-    region = var.aws_region
-    #profile = "devops"
+terraform {
+  required_providers {
+    aws = {
+      version = "~> 5.52.0"
+    }
+
+  }
+
+  required_version = "~> 1.1.9"
 }
