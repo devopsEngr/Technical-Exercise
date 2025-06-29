@@ -7,6 +7,14 @@ on:
         description: 'Docker image version tag (e.g. v1.0.0)'
         required: true
         default: 'latest'
+      tf_action:
+        description: 'Terraform Action (apply or destroy)'
+        required: true
+        default: 'apply'
+        type: choice
+        options:
+          - apply
+          - destroy
 
 jobs:
   deploy:
@@ -26,6 +34,7 @@ jobs:
 
       - name: Build Spring Boot App
         working-directory: springboot-application
+        if: ${{ github.event.inputs.tf_action == 'apply' }}
         run: mvn clean package -DskipTests
 
       - name: Set up Docker
