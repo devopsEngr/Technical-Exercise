@@ -2,7 +2,7 @@
 name: Terraform Run
 
 on:
-  workflow_call:
+  workflow_dispatch:
     inputs:
       image_version:
         required: true
