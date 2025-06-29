@@ -1,3 +1,12 @@
+terraform {
+  backend "s3" {
+    bucket         = "springboot-terraform-state-bucket"
+    key            = "dev/terraform.tfstate"
+    region         = var.aws_region
+    dynamodb_table = "terraform-locks"   
+    encrypt        = true
+  }
+}
 
 data "aws_ami" "latest_amazon_linux" {
   most_recent = true
