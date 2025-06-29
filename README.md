@@ -59,3 +59,5 @@ OK
    ```bash
    curl http://<alb_dns_name>/hello
    ```
+## Cost Estimation
+![alt text](image.png)
