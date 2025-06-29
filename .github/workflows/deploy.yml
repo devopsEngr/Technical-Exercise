@@ -39,6 +39,15 @@ jobs:
       - name: Terraform Init
         working-directory: Terraform
         run: terraform init -backend-config="bucket="springboot-terraform-state-bucket""
+      
+      - name: Terraform Validate
+        run: terraform validate
+
+      - name: Run TFLint
+        uses: terraform-linters/setup-tflint@v4
+        with:
+          tflint_version: latest
+      - run: tflint --init && tflint
 
       - name: Terraform Apply
         working-directory: Terraform
