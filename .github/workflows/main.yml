@@ -63,4 +63,4 @@ jobs:
 
       - name: Terraform Apply
         working-directory: Terraform
-        run: terraform apply -auto-approve -var="image_version=${{ github.event.inputs.image_version }}"
+        run: terraform destroy -auto-approve
