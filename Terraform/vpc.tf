@@ -60,6 +60,9 @@ resource "aws_route_table_association" "public_route_table_association" {
 resource "aws_eip" "eip" {
   domain = "vpc"
   depends_on = [ aws_internet_gateway.igw ]
+  tags = {
+    Name = "hello_app_eip"
+  }
 }
 
 resource "aws_nat_gateway" "nat_gw" {
