@@ -60,4 +60,4 @@ OK
    curl http://<alb_dns_name>/hello
    ```
 ## Cost Estimation
-![alt text](image.png)
+![alt text](cost-estimation.png)
